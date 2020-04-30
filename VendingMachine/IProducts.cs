@@ -1,6 +1,6 @@
 namespace VendingMachine_CSharp
 {
-    public interface IProducts
+    public interface IProduct
     {
         string Name { get; }
         double Price { get; }
