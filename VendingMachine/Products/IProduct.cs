@@ -1,4 +1,4 @@
-namespace VendingMachine_CSharp
+namespace VendingMachine_CSharp.Products
 {
     public interface IProduct
     {

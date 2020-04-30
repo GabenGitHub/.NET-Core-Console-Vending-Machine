@@ -11,24 +11,16 @@ namespace VendingMachine_CSharp
             while (true)
             {
                 Console.WriteLine("Welcome!");
-                while (!vendingMachine.ProductValidation) {
-                    vendingMachine.DisplayProducts();
 
-                    vendingMachine.SelectProduct(Console.ReadLine());
-                    Console.Clear();
+                while (!vendingMachine.ProductValidation) {
+                    vendingMachine.DisplayMainMenu();
                 }
 
                 while (vendingMachine.CheckInsertedCoins(vendingMachine.SelectedProduct))
                 {
-                    vendingMachine.DisplaySelectedProduct(vendingMachine.SelectedProduct);
-                    vendingMachine.DisplayCurrentAmount();
-                    vendingMachine.DisplayRemaining(vendingMachine.SelectedProduct);
-                    vendingMachine.DisplayInsertCoin();
-
-                    vendingMachine.InsertCoin(Console.ReadLine());
-                    Console.Clear();
+                    vendingMachine.DisplayProductMenu();
                 }
-                vendingMachine.DisplayRemaining(vendingMachine.SelectedProduct);
+                vendingMachine.DisplayRemainingOrChange(vendingMachine.SelectedProduct);
                 vendingMachine.DecreaseProductAmount(vendingMachine.SelectedProduct);
                 vendingMachine.DisplayEndOfPurchasing();
                 

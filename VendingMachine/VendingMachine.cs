@@ -1,4 +1,5 @@
 using System;
+using VendingMachine_CSharp.Products;
 
 namespace VendingMachine_CSharp
 {
@@ -101,6 +102,25 @@ namespace VendingMachine_CSharp
             return product.Amount > 0 ? Convert.ToString(product.Amount) : "Out of stock";
         }
 
+        public void DisplayMainMenu()
+        {
+            DisplayProducts();
+
+            SelectProduct(Console.ReadLine());
+            Console.Clear();
+        }
+
+        public void DisplayProductMenu()
+        {
+            DisplaySelectedProduct(SelectedProduct);
+            DisplayCurrentAmount();
+            DisplayRemainingOrChange(SelectedProduct);
+            DisplayInsertCoin();
+
+            InsertCoin(Console.ReadLine());
+            Console.Clear();
+        }
+
         public void DisplayProducts()
         {
             Console.WriteLine();
@@ -159,7 +179,7 @@ namespace VendingMachine_CSharp
             Console.WriteLine(StarDrawer(text));
         }
 
-        public void DisplayRemaining(IProduct product)
+        public void DisplayRemainingOrChange(IProduct product)
         {
             var remaining = $"Remaining: ${(product.Price - InsertedCoinsTotal).ToString("F")}";
             var change = $"Change: ${(InsertedCoinsTotal - product.Price).ToString("F")}";
